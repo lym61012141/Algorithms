@@ -9,9 +9,13 @@ public class BinarySearch {
         while (left <= right) {
             int mid = (right + left) / 2;
             Comparable midValue = array[mid];
-            if (midValue.compareTo(key) > 0) right = mid;
-            else if (midValue.compareTo(key) < 0) left = mid;
-            else return mid;
+            if (midValue.compareTo(key) > 0) {
+                right = mid;
+            } else if (midValue.compareTo(key) < 0) {
+                left = mid;
+            } else {
+                return mid;
+            }
         }
         return -1;
     }
@@ -21,12 +25,18 @@ public class BinarySearch {
     }
 
     private static int compare(Comparable key, Comparable[] array, int left, int right) {
-        if (left > right) return -1;
+        if (left > right) {
+            return -1;
+        }
         int mid = (left + right) / 2;
         Comparable midValue = array[mid];
-        if (midValue.compareTo(key) > 0) return compare(key, array, left, mid);
-        else if (midValue.compareTo(key) < 0) return compare(key, array, mid, right);
-        else return mid;
+        if (midValue.compareTo(key) > 0) {
+            return compare(key, array, left, mid);
+        } else if (midValue.compareTo(key) < 0) {
+            return compare(key, array, mid, right);
+        } else {
+            return mid;
+        }
     }
 
 
