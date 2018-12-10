@@ -2,7 +2,7 @@ package data.structure.linked;
 
 import org.junit.jupiter.api.Test;
 
-public class TestSingleLinkedList {
+public class TestLinkedList {
 
     @Test
     public void testSingleLinkedList() {
@@ -98,6 +98,18 @@ public class TestSingleLinkedList {
         foreachPrint(linkedList);
 
         linkedList.removeWithIndex(0);
+        foreachPrint(linkedList);
+    }
+
+    @Test
+    public void testReverse() {
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        foreachPrint(linkedList);
+
+        linkedList.reverse();
         foreachPrint(linkedList);
     }
 

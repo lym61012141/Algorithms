@@ -1,5 +1,8 @@
 package data.structure.linked;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SingleLinkedList<T> implements LinkedList<T> {
 
     protected LinkedListNode<T> header;
@@ -97,5 +100,25 @@ public class SingleLinkedList<T> implements LinkedList<T> {
     @Override
     public int size() {
         return lastIndex + 1;
+    }
+
+    public void reverse() {
+        if (lastIndex == 0) return;
+        List<LinkedListNode<T>> oldList = new ArrayList<>();
+        oldList.add(header);
+        LinkedListNode<T> next = header.getNext();
+        while (next != null) {
+            oldList.add(next);
+            next = next.getNext();
+        }
+        for (int i = oldList.size() - 1; i > 0; i--) {
+            LinkedListNode<T> node = oldList.get(i);
+            LinkedListNode<T> previousNode = oldList.get(i - 1);
+            node.setNext(previousNode);
+        }
+        LinkedListNode<T> footer = oldList.get(0);
+        footer.setNext(null);
+        this.footer = footer;
+        header = oldList.get(oldList.size() - 1);
     }
 }
