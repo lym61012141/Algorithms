@@ -1,10 +1,10 @@
 package data.structure.linked;
 
-public class SingleLinkedList<T> implements LinkedList<T> {
+public class DoublyLinkedList<T> implements LinkedList<T> {
 
-    protected LinkedListNode<T> header;
+    protected DoublyLinkedListNode<T> header;
 
-    protected LinkedListNode<T> footer;
+    protected DoublyLinkedListNode<T> footer;
 
     protected int lastIndex;
 
@@ -18,15 +18,15 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         }
     }
 
-    protected void appendWithFooter(T data) {
-        LinkedListNode<T> node = new LinkedListNode<>(data, null);
-        footer.setNext(node);
+    private void init(T data) {
+        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, null, null);
+        header = node;
         footer = node;
     }
 
-    private void init(T data) {
-        LinkedListNode<T> node = new LinkedListNode<>(data, null);
-        header = node;
+    protected void appendWithFooter(T data) {
+        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, footer, null);
+        footer.setNext(node);
         footer = node;
     }
 
@@ -40,15 +40,26 @@ public class SingleLinkedList<T> implements LinkedList<T> {
             if (header == null) {
                 init(data);
             } else {
-                header = new LinkedListNode<>(data, header);
+                DoublyLinkedListNode<T> newHeader = new DoublyLinkedListNode<>(data, footer, header);
+                header.setPrevious(newHeader);
+                header = newHeader;
             }
         } else {
-            LinkedListNode<T> previousNode = getNode(index - 1);
-            LinkedListNode<T> oldNodeWithIndex = previousNode.getNext();
-            LinkedListNode<T> node = new LinkedListNode<>(data, oldNodeWithIndex);
+            DoublyLinkedListNode<T> previousNode = getNode(index - 1);
+            DoublyLinkedListNode<T> oldNodeWithIndex = previousNode.getNext();
+            DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, previousNode, oldNodeWithIndex);
             previousNode.setNext(node);
         }
         lastIndex++;
+    }
+
+    private DoublyLinkedListNode<T> getNode(int index) {
+        if (index == 0) return header;
+        DoublyLinkedListNode<T> next = header.getNext();
+        for (int i = 1; i <= index; i++) {
+            if (next == null) break;
+        }
+        return next;
     }
 
     @Override
@@ -56,8 +67,9 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         if (index <= lastIndex) {
             if (index == 0) {
                 if (header != null) {
-                    LinkedListNode<T> next = header.getNext();
+                    DoublyLinkedListNode<T> next = header.getNext();
                     if (next != null) {
+                        next.setPrevious(null);
                         header = next;
                         footer = next;
                     } else {
@@ -66,9 +78,10 @@ public class SingleLinkedList<T> implements LinkedList<T> {
                     }
                 }
             } else {
-                LinkedListNode<T> previousNode = getNode(index - 1);
-                LinkedListNode<T> node = previousNode.getNext();
-                LinkedListNode<T> nodeNext = node.getNext();
+                DoublyLinkedListNode<T> previousNode = getNode(index - 1);
+                DoublyLinkedListNode<T> node = previousNode.getNext();
+                DoublyLinkedListNode<T> nodeNext = node.getNext();
+                nodeNext.setPrevious(previousNode);
                 previousNode.setNext(nodeNext);
             }
         }
@@ -78,21 +91,12 @@ public class SingleLinkedList<T> implements LinkedList<T> {
     @Override
     public T get(int index) {
         if (index == 0) return header == null ? null : header.getData();
-        LinkedListNode<T> next = header;
+        DoublyLinkedListNode<T> next = header;
         for (int i = 1; i <= index; i++) {
             next = next.getNext();
             if (next == null) break;
         }
         return next == null ? null : next.getData();
-    }
-
-    private LinkedListNode<T> getNode(int index) {
-        if (index == 0) return header;
-        LinkedListNode<T> next = header.getNext();
-        for (int i = 1; i <= index; i++) {
-            if (next == null) break;
-        }
-        return next;
     }
 
     @Override

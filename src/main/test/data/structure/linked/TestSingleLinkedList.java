@@ -24,6 +24,9 @@ public class TestSingleLinkedList {
         linkedList.removeWithIndex(1);
         foreachPrint(linkedList);
 
+        linkedList.removeWithIndex(0);
+        foreachPrint(linkedList);
+
     }
 
     @Test
@@ -44,6 +47,33 @@ public class TestSingleLinkedList {
         foreachPrint(linkedList);
 
         linkedList.removeWithIndex(1);
+        foreachPrint(linkedList);
+
+        linkedList.removeWithIndex(0);
+        foreachPrint(linkedList);
+    }
+
+    @Test
+    public void testDoublyLinkedList() {
+        LinkedList<Integer> linkedList = new DoublyLinkedList<>();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        foreachPrint(linkedList);
+
+        linkedList.insert(0, 0);
+        foreachPrint(linkedList);
+
+        linkedList.insert(4, 4);
+        foreachPrint(linkedList);
+
+        linkedList.insert(1, 100);
+        foreachPrint(linkedList);
+
+        linkedList.removeWithIndex(1);
+        foreachPrint(linkedList);
+
+        linkedList.removeWithIndex(0);
         foreachPrint(linkedList);
     }
 
