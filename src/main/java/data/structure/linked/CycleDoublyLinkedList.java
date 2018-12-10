@@ -24,10 +24,7 @@ public class CycleDoublyLinkedList<T> extends DoublyLinkedList<T> {
                 header = newHeader;
             }
         } else {
-            DoublyLinkedListNode<T> previousNode = getNode(index - 1);
-            DoublyLinkedListNode<T> oldNodeWithIndex = previousNode.getNext();
-            DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, previousNode, oldNodeWithIndex);
-            previousNode.setNext(node);
+            middleInsert(index, data);
         }
         lastIndex++;
     }
@@ -48,11 +45,7 @@ public class CycleDoublyLinkedList<T> extends DoublyLinkedList<T> {
                     }
                 }
             } else {
-                DoublyLinkedListNode<T> previousNode = getNode(index - 1);
-                DoublyLinkedListNode<T> node = previousNode.getNext();
-                DoublyLinkedListNode<T> nodeNext = node.getNext();
-                nodeNext.setPrevious(previousNode);
-                previousNode.setNext(nodeNext);
+                middleRemove(index);
             }
         }
         lastIndex--;

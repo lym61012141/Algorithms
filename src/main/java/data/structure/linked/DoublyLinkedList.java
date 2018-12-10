@@ -45,12 +45,16 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
                 header = newHeader;
             }
         } else {
-            DoublyLinkedListNode<T> previousNode = getNode(index - 1);
-            DoublyLinkedListNode<T> oldNodeWithIndex = previousNode.getNext();
-            DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, previousNode, oldNodeWithIndex);
-            previousNode.setNext(node);
+            middleInsert(index, data);
         }
         lastIndex++;
+    }
+
+    protected void middleInsert(int index, T data) {
+        DoublyLinkedListNode<T> previousNode = getNode(index - 1);
+        DoublyLinkedListNode<T> oldNodeWithIndex = previousNode.getNext();
+        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, previousNode, oldNodeWithIndex);
+        previousNode.setNext(node);
     }
 
     protected DoublyLinkedListNode<T> getNode(int index) {
@@ -77,14 +81,18 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
                     }
                 }
             } else {
-                DoublyLinkedListNode<T> previousNode = getNode(index - 1);
-                DoublyLinkedListNode<T> node = previousNode.getNext();
-                DoublyLinkedListNode<T> nodeNext = node.getNext();
-                nodeNext.setPrevious(previousNode);
-                previousNode.setNext(nodeNext);
+                middleRemove(index);
             }
         }
         lastIndex--;
+    }
+
+    protected void middleRemove(int index) {
+        DoublyLinkedListNode<T> previousNode = getNode(index - 1);
+        DoublyLinkedListNode<T> node = previousNode.getNext();
+        DoublyLinkedListNode<T> nodeNext = node.getNext();
+        nodeNext.setPrevious(previousNode);
+        previousNode.setNext(nodeNext);
     }
 
     @Override
