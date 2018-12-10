@@ -1,33 +1,12 @@
 package data.structure.linked;
 
-public class DoublyLinkedList<T> implements LinkedList<T> {
-
-    protected DoublyLinkedListNode<T> header;
-
-    protected DoublyLinkedListNode<T> footer;
-
-    protected int lastIndex;
-
+public class CycleDoublyLinkedList<T> extends DoublyLinkedList<T> {
     @Override
-    public void append(T data) {
-        if (footer == null) {
-            init(data);
-        } else {
-            appendWithFooter(data);
-            lastIndex++;
-        }
-    }
-
-    protected void init(T data) {
-        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, null, null);
-        header = node;
-        footer = node;
-    }
-
     protected void appendWithFooter(T data) {
-        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, footer, null);
+        DoublyLinkedListNode<T> node = new DoublyLinkedListNode<>(data, footer, header);
         footer.setNext(node);
         footer = node;
+        header.setPrevious(footer);
     }
 
     @Override
@@ -40,7 +19,7 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             if (header == null) {
                 init(data);
             } else {
-                DoublyLinkedListNode<T> newHeader = new DoublyLinkedListNode<>(data, null, header);
+                DoublyLinkedListNode<T> newHeader = new DoublyLinkedListNode<>(data, footer, header);
                 header.setPrevious(newHeader);
                 header = newHeader;
             }
@@ -53,15 +32,6 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         lastIndex++;
     }
 
-    protected DoublyLinkedListNode<T> getNode(int index) {
-        if (index == 0) return header;
-        DoublyLinkedListNode<T> next = header.getNext();
-        for (int i = 1; i <= index; i++) {
-            if (next == null) break;
-        }
-        return next;
-    }
-
     @Override
     public void removeWithIndex(int index) {
         if (index <= lastIndex) {
@@ -69,8 +39,9 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
                 if (header != null) {
                     DoublyLinkedListNode<T> next = header.getNext();
                     if (next != null) {
-                        next.setPrevious(null);
+                        next.setPrevious(footer);
                         header = next;
+                        footer.setNext(header);
                     } else {
                         header = null;
                         footer = null;
@@ -85,21 +56,5 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             }
         }
         lastIndex--;
-    }
-
-    @Override
-    public T get(int index) {
-        if (index == 0) return header == null ? null : header.getData();
-        DoublyLinkedListNode<T> next = header;
-        for (int i = 1; i <= index; i++) {
-            next = next.getNext();
-            if (next == null) break;
-        }
-        return next == null ? null : next.getData();
-    }
-
-    @Override
-    public int size() {
-        return lastIndex + 1;
     }
 }
