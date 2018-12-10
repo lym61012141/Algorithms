@@ -1,4 +1,4 @@
-package chapter1;
+package algorithm.chapter1;
 
 import edu.princeton.cs.algs4.StdDraw;
 import org.junit.jupiter.api.Test;

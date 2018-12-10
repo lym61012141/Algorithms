@@ -1,4 +1,4 @@
-package chapter1;
+package algorithm.sort;
 
 import com.google.common.collect.Lists;
 
