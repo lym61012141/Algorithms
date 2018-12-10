@@ -2,11 +2,11 @@ package data.structure.linked;
 
 public class SingleLinkedList<T> implements LinkedList<T> {
 
-    private LinkedListNode<T> header;
+    protected LinkedListNode<T> header;
 
-    private LinkedListNode<T> footer;
+    protected LinkedListNode<T> footer;
 
-    private int lastIndex;
+    protected int lastIndex;
 
     @Override
     public void append(T data) {
@@ -18,7 +18,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         }
     }
 
-    private void appendWithFooter(T data) {
+    protected void appendWithFooter(T data) {
         LinkedListNode<T> node = new LinkedListNode<>(data, null);
         footer.setNext(node);
         footer = node;
