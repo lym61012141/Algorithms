@@ -1,5 +1,9 @@
 package data.structure.linked;
 
+/**
+ * 双向链表
+ * @param <T>
+ */
 public class DoublyLinkedList<T> implements LinkedList<T> {
 
     protected DoublyLinkedListNode<T> header;
@@ -106,6 +110,9 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         return next == null ? null : next.getData();
     }
 
+    /**
+     * 双向链表反转
+     */
     public void reverse() {
         DoublyLinkedListNode<T> node = header;
         DoublyLinkedListNode<T> prev = null;

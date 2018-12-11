@@ -1,5 +1,8 @@
 package algorithm.search;
 
+/**
+ * 二分查找
+ */
 public class BinarySearch {
 
     public static int search(Comparable key, Comparable[] array) {
@@ -20,6 +23,12 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 递归版
+     * @param key
+     * @param array
+     * @return
+     */
     public static int recursionSearch(Comparable key, Comparable[] array) {
         return compare(key, array, 0, array.length - 1);
     }

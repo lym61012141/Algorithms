@@ -1,5 +1,9 @@
 package data.structure.linked;
 
+/**
+ * 循环双向链表
+ * @param <T>
+ */
 public class CycleDoublyLinkedList<T> extends DoublyLinkedList<T> {
     @Override
     protected void appendWithFooter(T data) {

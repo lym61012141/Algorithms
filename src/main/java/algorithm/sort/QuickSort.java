@@ -5,6 +5,9 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 快速排序未优化版
+ */
 public class QuickSort {
 
     public static List<Integer> sort(List<Integer> items) {

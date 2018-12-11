@@ -4,6 +4,9 @@ import com.google.common.collect.Lists;
 
 import java.util.List;
 
+/**
+ * 快速排序
+ */
 public class QuickSort2 {
 
     public static void quickSort(List<Integer> sourceList) {

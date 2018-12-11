@@ -1,5 +1,9 @@
 package data.structure.linked;
 
+/**
+ * 单链表
+ * @param <T>
+ */
 public class SingleLinkedList<T> implements LinkedList<T> {
 
     protected LinkedListNode<T> header;
@@ -99,6 +103,9 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return lastIndex + 1;
     }
 
+    /**
+     * 单链表反转
+     */
     public void reverse() {
         LinkedListNode<T> node = header;
         LinkedListNode<T> prev = null;
@@ -114,6 +121,9 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         }
     }
 
+    /**
+     * 单链表反转 递归版
+     */
     public void reverseRecursion() {
         footer = header;
         reverseRecursion(header);
@@ -131,6 +141,13 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return header;
     }
 
+    /**
+     * 检测链表中是否有环
+     * 快慢指针算法
+     * @param header
+     * @param <T>
+     * @return
+     */
     public <T> Boolean checkIsCycle(LinkedListNode<T> header) {
         LinkedListNode<T> walker = header;
         LinkedListNode<T> runner = header;
@@ -145,6 +162,10 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return false;
     }
 
+    /**
+     * 检测链表中是否有环 测试用例
+     * @param args
+     */
     public static void main(String[] args) {
         LinkedListNode<Integer> header = new LinkedListNode<>(1, null);
         LinkedListNode<Integer> node2 = new LinkedListNode<>(2, null);
