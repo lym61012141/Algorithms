@@ -113,6 +113,18 @@ public class TestLinkedList {
         foreachPrint(linkedList);
     }
 
+    @Test
+    public void testReverseRecursion() {
+        SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        foreachPrint(linkedList);
+
+        linkedList.reverseRecursion();
+        foreachPrint(linkedList);
+    }
+
     private void foreachPrint(LinkedList<Integer> linkedList) {
         System.out.println("-----------------------------");
         for (int i = 0; i < linkedList.size(); i++) {

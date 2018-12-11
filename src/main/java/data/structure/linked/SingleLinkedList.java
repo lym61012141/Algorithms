@@ -114,4 +114,22 @@ public class SingleLinkedList<T> implements LinkedList<T> {
             node = next;
         }
     }
+
+    public void reverseRecursion() {
+        footer = header;
+        reverseRecursion(header);
+    }
+
+    public LinkedListNode<T> reverseRecursion(LinkedListNode<T> node) {
+        if (node == null || node.getNext() == null) {
+            header = node;
+            return node;
+        }
+        LinkedListNode<T> next = node.getNext();
+        node.setNext(null);
+        LinkedListNode<T> header = reverseRecursion(next);
+        next.setNext(node);
+        return header;
+    }
+
 }
