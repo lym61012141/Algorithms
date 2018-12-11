@@ -120,7 +120,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         reverseRecursion(header);
     }
 
-    public LinkedListNode<T> reverseRecursion(LinkedListNode<T> node) {
+    private LinkedListNode<T> reverseRecursion(LinkedListNode<T> node) {
         if (node == null || node.getNext() == null) {
             header = node;
             return node;
@@ -132,4 +132,32 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return header;
     }
 
+    public <T> Boolean checkIsCycle(LinkedListNode<T> header) {
+        LinkedListNode<T> walker = header;
+        LinkedListNode<T> runner = header;
+        while (walker != null) {
+            LinkedListNode<T> next = walker.getNext();
+            LinkedListNode<T> runnerNext = runner.getNext();
+            if (next == null || runnerNext == null || runnerNext.getNext() == null) return false;
+            if (next.equals(runnerNext.getNext())) return true;
+            walker = next;
+            runner = runnerNext.getNext();
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        LinkedListNode<Integer> header = new LinkedListNode<>(1, null);
+        LinkedListNode<Integer> node2 = new LinkedListNode<>(2, null);
+        LinkedListNode<Integer> node3 = new LinkedListNode<>(3, null);
+        LinkedListNode<Integer> node4 = new LinkedListNode<>(4, null);
+        LinkedListNode<Integer> node5 = new LinkedListNode<>(5, null);
+        header.setNext(node2);
+        node2.setNext(node3);
+        node3.setNext(node4);
+        node4.setNext(node5);
+        System.out.println(new SingleLinkedList<>().checkIsCycle(header));
+        node5.setNext(node3);
+        System.out.println(new SingleLinkedList<>().checkIsCycle(header));
+    }
 }
