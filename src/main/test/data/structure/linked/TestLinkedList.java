@@ -139,8 +139,8 @@ public class TestLinkedList {
 
     private void foreachPrint(LinkedList<Integer> linkedList) {
         System.out.println("-----------------------------");
-        for (int i = 0; i < linkedList.size(); i++) {
-            System.out.println(linkedList.get(i));
+        for (Integer integer : linkedList) {
+            System.out.println(integer);
         }
     }
 }

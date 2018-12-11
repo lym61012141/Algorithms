@@ -1,7 +1,10 @@
 package data.structure.linked;
 
+import java.util.Iterator;
+
 /**
  * 单链表
+ *
  * @param <T>
  */
 public class SingleLinkedList<T> implements LinkedList<T> {
@@ -103,6 +106,12 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return lastIndex + 1;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new SingleLinkedListIterator<>(header);
+
+    }
+
     /**
      * 单链表反转
      */
@@ -144,6 +153,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
     /**
      * 检测链表中是否有环
      * 快慢指针算法
+     *
      * @param header
      * @param <T>
      * @return
@@ -164,6 +174,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
 
     /**
      * 检测链表中是否有环 测试用例
+     *
      * @param args
      */
     public static void main(String[] args) {

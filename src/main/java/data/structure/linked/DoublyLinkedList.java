@@ -1,5 +1,7 @@
 package data.structure.linked;
 
+import java.util.Iterator;
+
 /**
  * 双向链表
  * @param <T>
@@ -131,6 +133,11 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
             node = next;
 
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new DoublyLinkedListIterator<>(header);
     }
 
     @Override

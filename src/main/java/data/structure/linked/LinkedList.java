@@ -1,6 +1,6 @@
 package data.structure.linked;
 
-public interface LinkedList<T> {
+public interface LinkedList<T> extends Iterable<T>{
 
     void append(T data);
 
