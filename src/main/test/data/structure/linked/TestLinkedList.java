@@ -125,6 +125,18 @@ public class TestLinkedList {
         foreachPrint(linkedList);
     }
 
+    @Test
+    public void testDoublyReverse() {
+        DoublyLinkedList<Integer> linkedList = new DoublyLinkedList<>();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        foreachPrint(linkedList);
+
+        linkedList.reverse();
+        foreachPrint(linkedList);
+    }
+
     private void foreachPrint(LinkedList<Integer> linkedList) {
         System.out.println("-----------------------------");
         for (int i = 0; i < linkedList.size(); i++) {

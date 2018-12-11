@@ -100,7 +100,6 @@ public class SingleLinkedList<T> implements LinkedList<T> {
     }
 
     public void reverse() {
-        if (lastIndex == 0) return;
         LinkedListNode<T> node = header;
         LinkedListNode<T> prev = null;
         footer = header;

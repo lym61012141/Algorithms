@@ -106,6 +106,26 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
         return next == null ? null : next.getData();
     }
 
+    public void reverse() {
+        DoublyLinkedListNode<T> node = header;
+        DoublyLinkedListNode<T> prev = null;
+        footer = header;
+        while (node != null) {
+            DoublyLinkedListNode<T> next = node.getNext();
+            if (next == null) {
+                node.setPrevious(null);
+                header = node;
+            }
+            node.setNext(prev);
+            if (prev != null) {
+                prev.setPrevious(node);
+            }
+            prev = node;
+            node = next;
+
+        }
+    }
+
     @Override
     public int size() {
         return lastIndex + 1;
