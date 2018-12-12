@@ -2,6 +2,9 @@ package data.structure.linked;
 
 import java.util.Iterator;
 
+/**
+ * 有序链表合并
+ */
 public class SortedLinkedListMerge {
 
     public LinkedList<Integer> merge(LinkedList<Integer> list1, LinkedList<Integer> list2) {

@@ -150,6 +150,21 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return header;
     }
 
+    public LinkedListNode<T> getMiddleNode() {
+        LinkedListNode<T> walker = header;
+        LinkedListNode<T> runner = header;
+        while (runner != null) {
+            LinkedListNode<T> runnerNext = runner.getNext();
+            if (runnerNext == null || runnerNext.getNext() == null) {
+                return walker;
+            } else {
+                walker = walker.getNext();
+                runner = runnerNext.getNext();
+            }
+        }
+        return walker;
+    }
+
     /**
      * 检测链表中是否有环
      * 快慢指针算法
