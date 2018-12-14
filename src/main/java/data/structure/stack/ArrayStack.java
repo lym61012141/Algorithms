@@ -2,6 +2,11 @@ package data.structure.stack;
 
 import java.util.Arrays;
 
+/**
+ * 利用数组实现栈
+ *
+ * @param <T>
+ */
 public class ArrayStack<T> implements Stack<T> {
 
     private static final int DEFAULT_SIZE = 8;
@@ -28,7 +33,13 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T pop() {
-        return count > 0 ? (T) items[--count] : null;
+        if (count > 0) {
+            T item = (T) items[--count];
+            items[count] = null;
+            return item;
+        } else {
+            return null;
+        }
     }
 
     @Override
