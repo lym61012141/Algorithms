@@ -23,15 +23,33 @@ public class ArrayQueue<T> implements Queue<T> {
 
     @Override
     public Boolean enqueue(T t) {
-        if (tail >= items.length) return Boolean.FALSE;
+        if (tail >= items.length) {
+            if (header == 0) {
+                return Boolean.FALSE;
+            } else {
+                move();
+            }
+        }
         items[tail++] = t;
         return Boolean.TRUE;
+    }
+
+    private void move() {
+        for (int i = 0; i < tail - header; i++) {
+            items[i] = items[header + i];
+            items[header + i] = null;
+        }
+        tail = tail - header;
+        header = 0;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public T dequeue() {
         if (header >= tail) return null;
-        return (T) items[header++];
+        T item = (T) items[header];
+        items[header] = null;
+        header++;
+        return item;
     }
 }

@@ -15,5 +15,22 @@ public class TestQueue {
         for (int i = 0; i < 20; i++) {
             System.out.println(queue.dequeue());
         }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(queue.enqueue(i + 1));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(queue.dequeue());
+        }
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.enqueue(i + 1));
+        }
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.dequeue());
+        }
     }
+
 }
