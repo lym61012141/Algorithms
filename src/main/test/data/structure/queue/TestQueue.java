@@ -1,4 +1,4 @@
-package data.structure.linked;
+package data.structure.queue;
 
 import data.structure.queue.ArrayQueue;
 import data.structure.queue.LinkedQueue;
@@ -37,6 +37,33 @@ public class TestQueue {
     @Test
     public void testLinkedQueue() {
         Queue<Integer> queue = new LinkedQueue<>();
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.enqueue(i + 1));
+        }
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.dequeue());
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(queue.enqueue(i + 1));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(queue.dequeue());
+        }
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.enqueue(i + 1));
+        }
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(queue.dequeue());
+        }
+    }
+
+    @Test
+    public void testCycleArrayQueue() {
+        Queue<Integer> queue = new CycleArrayQueue<>();
         for (int i = 0; i < 20; i++) {
             System.out.println(queue.enqueue(i + 1));
         }

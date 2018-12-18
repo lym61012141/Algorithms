@@ -1,4 +1,4 @@
-package data.structure.linked;
+package data.structure.stack;
 
 import data.structure.stack.ArrayStack;
 import data.structure.stack.LinkedStack;
