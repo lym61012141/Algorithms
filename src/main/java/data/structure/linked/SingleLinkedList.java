@@ -65,6 +65,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
                 if (header != null) {
                     LinkedListNode<T> next = header.getNext();
                     if (next != null) {
+                        header.setNext(null);
                         header = next;
                     } else {
                         header = null;
@@ -77,8 +78,8 @@ public class SingleLinkedList<T> implements LinkedList<T> {
                 LinkedListNode<T> nodeNext = node.getNext();
                 previousNode.setNext(nodeNext);
             }
+            lastIndex--;
         }
-        lastIndex--;
     }
 
     @Override
