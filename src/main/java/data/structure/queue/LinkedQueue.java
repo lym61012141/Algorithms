@@ -3,6 +3,10 @@ package data.structure.queue;
 
 import data.structure.linked.LinkedListNode;
 
+/**
+ * 链表实现队列，不限制长度，代码复杂度和时间复杂度低，但是空间复杂度高，队列大小不可控
+ * @param <T>
+ */
 public class LinkedQueue<T> implements Queue<T> {
 
     private LinkedListNode<T> header;

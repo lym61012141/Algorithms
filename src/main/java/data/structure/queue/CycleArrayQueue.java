@@ -1,5 +1,9 @@
 package data.structure.queue;
 
+/**
+ * 循环数组队列 可以避免数据迁移
+ * @param <T>
+ */
 public class CycleArrayQueue<T> implements Queue<T> {
 
     private static final int DEFAULT_SIZE = 16;

@@ -1,7 +1,7 @@
 package data.structure.queue;
 
 /**
- * 数组实现队列
+ * 数组实现队列，无法扩容，index到数组尾部时如果数组中还有空闲空间还需要将元素整体往头部偏移，比较耗时
  */
 public class ArrayQueue<T> implements Queue<T> {
 
