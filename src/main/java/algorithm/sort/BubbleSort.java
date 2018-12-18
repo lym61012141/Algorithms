@@ -2,6 +2,13 @@ package algorithm.sort;
 
 import java.util.Arrays;
 
+/**
+ * 冒泡排序
+ * 两层循环
+ * 内部循环每次比较相邻值将最大的值移到最后
+ * 外部循环n次
+ * 时间复杂度为n * n
+ */
 public class BubbleSort {
 
     public static void sort(int[] items) {
