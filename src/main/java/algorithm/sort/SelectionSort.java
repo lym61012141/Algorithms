@@ -14,13 +14,16 @@ public class SelectionSort {
         if (items.length <= 1) return;
 
         for (int i = 0; i < items.length; i++) {
-
+            int minIndex = i;
             for (int j = i; j < items.length; j++) {
-                if (items[i] > items[j]) {
-                    int temp = items[i];
-                    items[i] = items[j];
-                    items[j] = temp;
+                if (items[minIndex] > items[j]) {
+                    minIndex = j;
                 }
+            }
+            if (minIndex != i) {
+                int temp = items[i];
+                items[i] = items[minIndex];
+                items[minIndex] = temp;
             }
         }
     }
