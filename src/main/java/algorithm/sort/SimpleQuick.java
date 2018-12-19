@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 快速排序未优化版
  */
-public class QuickSort {
+public class SimpleQuick {
 
     public static List<Integer> sort(List<Integer> items) {
         if (items.size() > 1) {

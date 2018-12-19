@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 如果当前值小于有序部分最大值，与有序部分进行循环比较，将大的部分右移
  * 时间复杂度为n * n
  */
-public class InsertionSort {
+public class Insertion {
 
     public static void sort(int[] items) {
         if (items.length <= 1) return;

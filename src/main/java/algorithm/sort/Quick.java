@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 快速排序
  */
-public class QuickSort2 {
+public class Quick {
 
     public static void quickSort(List<Integer> sourceList) {
         sort(sourceList, 0, sourceList.size() - 1);

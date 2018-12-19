@@ -8,7 +8,7 @@ import java.util.Arrays;
  * 内部循环每次找出未排序部分的最小值
  * 外部循环每次拿到内部循环找到的最小值设置到左边
  */
-public class SelectionSort {
+public class Selection {
 
     public static void sort(int[] items) {
         if (items.length <= 1) return;

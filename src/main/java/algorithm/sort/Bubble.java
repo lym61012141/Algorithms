@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 外部循环n次
  * 时间复杂度为n * n
  */
-public class BubbleSort {
+public class Bubble {
 
     public static void sort(int[] items) {
         if (items.length <= 1) return;
