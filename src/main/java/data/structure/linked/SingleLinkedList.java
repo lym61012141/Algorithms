@@ -7,6 +7,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
+@SuppressWarnings("Duplicates")
 public class SingleLinkedList<T> implements LinkedList<T> {
 
     protected LinkedListNode<T> header;
@@ -31,7 +32,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         footer = node;
     }
 
-    private void init(T data) {
+    protected void init(T data) {
         LinkedListNode<T> node = new LinkedListNode<>(data, null);
         header = node;
         footer = node;
@@ -93,7 +94,7 @@ public class SingleLinkedList<T> implements LinkedList<T> {
         return next == null ? null : next.getData();
     }
 
-    private LinkedListNode<T> getNode(int index) {
+    protected LinkedListNode<T> getNode(int index) {
         if (index == 0) return header;
         LinkedListNode<T> next = header.getNext();
         for (int i = 1; i <= index; i++) {
