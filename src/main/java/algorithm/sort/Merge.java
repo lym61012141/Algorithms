@@ -2,6 +2,12 @@ package algorithm.sort;
 
 import java.util.Arrays;
 
+/**
+ * 归并排序
+ * 采用递归分而治之的思想
+ * 先将数组递归分割为更小单元
+ * 之后将这些数组逐层往上有序合并
+ */
 public class Merge {
 
     public static void sort(int[] items) {
@@ -41,6 +47,13 @@ public class Merge {
         return result;
     }
 
+    /**
+     * 有序数组合并
+     * @param items
+     * @param left
+     * @param right
+     * @param mid
+     */
     public static void merge(int[] items, int left, int right, int mid) {
         int[] temp = new int[right - left + 1];
         int leftIndex = left;
