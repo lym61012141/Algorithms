@@ -7,6 +7,7 @@ import java.util.Arrays;
  * 采用递归分而治之的思想
  * 先将数组递归分割为更小单元
  * 之后将这些数组逐层往上有序合并
+ * 时间复杂度为logN * N
  */
 public class Merge {
 

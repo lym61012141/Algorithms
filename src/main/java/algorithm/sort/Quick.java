@@ -8,6 +8,7 @@ import java.util.Random;
  * 采用递归分而治之的思想
  * 每次将数组按照某个基准值分为比基准值小和比基准值大的两个区域
  * 然后再对该区域进行分区
+ * 时间复杂度为logN * N
  * https://mp.weixin.qq.com/s?__biz=MzI1MTIzMzI2MA==&mid=2650563191&idx=1&sn=60e86c5cfd825af9dd3fa4f5604bcb10&chksm=f1fed4f4c6895de259aedb6dda1ea68e07bb81259a457c0500b856f5fd58d980c23599ea2ccd&mpshare=1&scene=1&srcid=12198dMrGaRfJ2AnvCctHBBL#rd
  */
 public class Quick {
@@ -81,8 +82,8 @@ public class Quick {
             while (left < right && items[left] <= pivot) ++left;
             items[right] = items[left];
         }
-        items[left] = pivot;//扫描完成，枢轴归位
-        return left;//返回新的枢轴位置
+        items[left] = pivot;
+        return left;
     }
 
     private static void swap(int[] items, int i, int j) {
