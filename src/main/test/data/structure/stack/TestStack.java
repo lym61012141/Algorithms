@@ -1,8 +1,5 @@
 package data.structure.stack;
 
-import data.structure.stack.ArrayStack;
-import data.structure.stack.LinkedStack;
-import data.structure.stack.Stack;
 import org.junit.jupiter.api.Test;
 
 public class TestStack {
@@ -22,7 +19,7 @@ public class TestStack {
         System.out.println(stack.pop());
 
         for (int i = 0; i < 100; i++) {
-             stack.push(i);
+            stack.push(i);
         }
 
         for (int i = 0; i < 100; i++) {

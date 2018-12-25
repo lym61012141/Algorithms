@@ -26,8 +26,7 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public void push(T t) {
         if (count >= items.length) grow();
-        items[count] = t;
-        count++;
+        items[count++] = t;
     }
 
     @Override
