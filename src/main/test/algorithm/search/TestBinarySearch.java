@@ -45,4 +45,11 @@ public class TestBinarySearch {
         System.out.println(BinarySearch.searchLastLessThanEqualIndex(8, duplicateSortedArray));
         System.out.println(BinarySearch.searchLastLessThanEqualIndex(9, duplicateSortedArray));
     }
+
+    @Test
+    public void testSearchInCycleArray() {
+        int[] cycleArray = {4, 5, 6, 1, 2, 3};
+        System.out.println(BinarySearch.searchInCycleArray(5, cycleArray));
+        System.out.println(BinarySearch.searchInCycleArray(2, cycleArray));
+    }
 }
