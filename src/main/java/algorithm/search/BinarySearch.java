@@ -131,7 +131,7 @@ public class BinarySearch {
             int mid = (right + left) >> 1;
             int midValue = array[mid];
             if (midValue >= key) {
-                if (array[mid - 1] >= key) {
+                if (mid != 0 && array[mid - 1] >= key) {
                     right = mid - 1;
                 } else {
                     return mid;
@@ -158,7 +158,7 @@ public class BinarySearch {
             int mid = (right + left) >> 1;
             int midValue = array[mid];
             if (midValue <= key) {
-                if (array[mid + 1] <= key) {
+                if ((mid + 1) != array.length && array[mid + 1] <= key) {
                     left = mid - 1;
                 } else {
                     return mid;
