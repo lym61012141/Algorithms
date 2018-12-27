@@ -20,6 +20,7 @@ Data structures and algorithms analysis practice in Java
 
 ## Tree
 * LinkedBinaryTree
+* ArrayBinaryTree
 
 ## Sort
 * BubbleSort

@@ -2,7 +2,7 @@ package data.structure.tree;
 
 import org.junit.jupiter.api.Test;
 
-public class TestBinaryTree {
+public class TestLinkedBinaryTree {
 
     private BinaryTreeNode<String> a = new BinaryTreeNode<>("A");
     private BinaryTreeNode<String> b = new BinaryTreeNode<>("B");
