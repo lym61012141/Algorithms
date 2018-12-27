@@ -18,6 +18,9 @@ Data structures and algorithms analysis practice in Java
 * LinkedQueue
 * CycleArrayQueue
 
+## Tree
+* LinkedBinaryTree
+
 ## Sort
 * BubbleSort
 * SelectionSort
