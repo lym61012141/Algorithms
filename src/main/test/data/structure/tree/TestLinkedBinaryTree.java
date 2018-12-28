@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 
 public class TestLinkedBinaryTree {
 
-    private BinaryTreeNode<String> a = new BinaryTreeNode<>("A");
-    private BinaryTreeNode<String> b = new BinaryTreeNode<>("B");
-    private BinaryTreeNode<String> c = new BinaryTreeNode<>("C");
-    private BinaryTreeNode<String> d = new BinaryTreeNode<>("D");
-    private BinaryTreeNode<String> e = new BinaryTreeNode<>("E");
-    private BinaryTreeNode<String> f = new BinaryTreeNode<>("F");
-    private BinaryTreeNode<String> g = new BinaryTreeNode<>("G");
+    private LinkedBinaryTreeNode<String> a = new LinkedBinaryTreeNode<>("A");
+    private LinkedBinaryTreeNode<String> b = new LinkedBinaryTreeNode<>("B");
+    private LinkedBinaryTreeNode<String> c = new LinkedBinaryTreeNode<>("C");
+    private LinkedBinaryTreeNode<String> d = new LinkedBinaryTreeNode<>("D");
+    private LinkedBinaryTreeNode<String> e = new LinkedBinaryTreeNode<>("E");
+    private LinkedBinaryTreeNode<String> f = new LinkedBinaryTreeNode<>("F");
+    private LinkedBinaryTreeNode<String> g = new LinkedBinaryTreeNode<>("G");
 
     {
         a.setLeft(b);
