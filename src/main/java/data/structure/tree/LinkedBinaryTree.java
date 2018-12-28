@@ -6,6 +6,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     private LinkedBinaryTreeNode<T> root;
 
+    @Override
     public LinkedBinaryTreeNode<T> getRoot() {
         return root;
     }

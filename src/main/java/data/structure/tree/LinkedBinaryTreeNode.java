@@ -2,6 +2,8 @@ package data.structure.tree;
 
 public class LinkedBinaryTreeNode<T> extends TreeNode<T> {
 
+    private LinkedBinaryTreeNode<T> parent;
+
     private LinkedBinaryTreeNode<T> left;
 
     private LinkedBinaryTreeNode<T> right;
@@ -11,6 +13,14 @@ public class LinkedBinaryTreeNode<T> extends TreeNode<T> {
 
     public LinkedBinaryTreeNode(T data) {
         super.data = data;
+    }
+
+    public LinkedBinaryTreeNode<T> getParent() {
+        return parent;
+    }
+
+    public void setParent(LinkedBinaryTreeNode<T> parent) {
+        this.parent = parent;
     }
 
     public LinkedBinaryTreeNode<T> getLeft() {
