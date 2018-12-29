@@ -4,35 +4,33 @@ import org.junit.jupiter.api.Test;
 
 public class TestArrayBinaryTree {
 
-    private int a = 1;
-
-    private ArrayBinaryTree<String> arrayBinaryTree = new ArrayBinaryTree<>();
+    private BinaryTree<String> arrayBinaryTree = new ArrayBinaryTree<>();
 
     {
-        arrayBinaryTree.setValue(a, "A");
+        TreeNode<String> root = arrayBinaryTree.setRoot(new ArrayBinaryTreeNode<>("A"));
 
-        int b = arrayBinaryTree.setLeft(a, "B");
-        int c = arrayBinaryTree.setRight(a, "C");
+        TreeNode<String> b = arrayBinaryTree.setLeft(root, new ArrayBinaryTreeNode<>("B"));
+        TreeNode<String> c = arrayBinaryTree.setRight(root, new ArrayBinaryTreeNode<>("C"));
 
-        int d = arrayBinaryTree.setLeft(b, "D");
-        int e = arrayBinaryTree.setRight(b, "E");
+        arrayBinaryTree.setLeft(b, new ArrayBinaryTreeNode<>("D"));
+        arrayBinaryTree.setRight(b, new ArrayBinaryTreeNode<>("E"));
 
-        int f = arrayBinaryTree.setLeft(c, "F");
-        int g = arrayBinaryTree.setRight(c, "G");
+        arrayBinaryTree.setLeft(c, new ArrayBinaryTreeNode<>("F"));
+        arrayBinaryTree.setRight(c, new ArrayBinaryTreeNode<>("G"));
     }
 
     @Test
     public void preTraversing() {
-        arrayBinaryTree.preTraversing(a);
+        arrayBinaryTree.preTraversing(arrayBinaryTree.getRoot());
     }
 
     @Test
     public void inTraversing() {
-        arrayBinaryTree.inTraversing(a);
+        arrayBinaryTree.inTraversing(arrayBinaryTree.getRoot());
     }
 
     @Test
     public void postTraversing() {
-        arrayBinaryTree.postTraversing(a);
+        arrayBinaryTree.postTraversing(arrayBinaryTree.getRoot());
     }
 }

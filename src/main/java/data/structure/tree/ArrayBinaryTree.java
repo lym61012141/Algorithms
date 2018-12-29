@@ -1,9 +1,12 @@
 package data.structure.tree;
 
 import java.util.Arrays;
+import java.util.function.Function;
 
-public class ArrayBinaryTree<T> {
+@SuppressWarnings("Duplicates")
+public class ArrayBinaryTree<T> implements BinaryTree<T> {
 
+    private static final int ROOT_INDEX = 1;
     private Object[] items;
 
     public ArrayBinaryTree() {
@@ -14,9 +17,81 @@ public class ArrayBinaryTree<T> {
         this.items = new Object[size];
     }
 
+    @Override
+    public TreeNode<T> getLeft(TreeNode<T> node) {
+        return mapWithCheck(node, treeNode -> {
+            int leftIndex = calculateLeftIndex(treeNode.getIndex());
+            if (leftIndex + 1 >= items.length) return null;
+            T value = getValue(leftIndex);
+            return value == null ? null : new ArrayBinaryTreeNode<>(leftIndex, value);
+        });
+    }
+
+    @Override
+    public TreeNode<T> getRight(TreeNode<T> node) {
+        return mapWithCheck(node, treeNode -> {
+            int rightIndex = calculateRightIndex(treeNode.getIndex());
+            if (rightIndex + 1 >= items.length) return null;
+            T value = getValue(rightIndex);
+            return value == null ? null : new ArrayBinaryTreeNode<>(rightIndex, value);
+        });
+    }
+
+    @Override
+    public TreeNode<T> setLeft(TreeNode<T> parent, TreeNode<T> left) {
+        return mapWithCheck(parent, parentNode -> {
+            ArrayBinaryTreeNode<T> leftNode = mapWithCheck(left, x -> x);
+            int leftIndex = calculateLeftIndex(parentNode.getIndex());
+            setValue(leftIndex, leftNode.getData());
+            return new ArrayBinaryTreeNode<>(leftIndex, leftNode.data);
+        });
+    }
+
+    @Override
+    public TreeNode<T> setRight(TreeNode<T> parent, TreeNode<T> right) {
+        return mapWithCheck(parent, parentNode -> {
+            ArrayBinaryTreeNode<T> rightNode = mapWithCheck(right, x -> x);
+            int rightIndex = calculateRightIndex(parentNode.getIndex());
+            setValue(rightIndex, rightNode.getData());
+            return new ArrayBinaryTreeNode<>(rightIndex, rightNode.data);
+        });
+    }
+
+    @Override
+    public TreeNode<T> getRoot() {
+        T value = getValue(ROOT_INDEX);
+        if (value == null) return null;
+        return new ArrayBinaryTreeNode<>(ROOT_INDEX, value);
+    }
+
+    @Override
+    public TreeNode<T> setRoot(TreeNode<T> node) {
+        setValue(ROOT_INDEX, node.data);
+        ArrayBinaryTreeNode<T> root = mapWithCheck(node, x -> x);
+        root.setIndex(ROOT_INDEX);
+        return root;
+    }
+
+    @Override
+    public TreeNode<T> getParent(TreeNode<T> node) {
+        ArrayBinaryTreeNode<T> treeNode = mapWithCheck(node, x -> x);
+        int parentIndex = calculateParentIndex(treeNode.getIndex());
+        T value = getValue(parentIndex);
+        return value == null ? null : new ArrayBinaryTreeNode<>(parentIndex, value);
+    }
+
     public void setValue(int index, T data) {
         checkAndGrow(index);
         items[index] = data;
+    }
+
+    private ArrayBinaryTreeNode<T> mapWithCheck(TreeNode<T> node, Function<ArrayBinaryTreeNode<T>, ArrayBinaryTreeNode<T>> function) {
+        if (node == null) return null;
+        if (node instanceof ArrayBinaryTreeNode) {
+            return function.apply((ArrayBinaryTreeNode<T>) node);
+        } else {
+            throw new IllegalArgumentException("node must be ArrayBinaryTreeNode");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -28,43 +103,15 @@ public class ArrayBinaryTree<T> {
         if (index >= items.length) grow();
     }
 
-    public int setLeft(int index, T data) {
-        int leftIndex = calculateLeftIndex(index);
-        checkAndGrow(leftIndex);
-        items[leftIndex] = data;
-        return leftIndex;
-    }
-
-    public int setRight(int index, T data) {
-        int rightIndex = calculateRightIndex(index);
-        checkAndGrow(rightIndex);
-        items[rightIndex] = data;
-        return rightIndex;
-    }
-
-    @SuppressWarnings("unchecked")
-    public T getLeft(int index) {
-        int leftIndex = calculateLeftIndex(index);
-        if (leftIndex + 1 >= items.length) return null;
-        return (T) items[leftIndex];
-    }
-
-    @SuppressWarnings("unchecked")
-    public T getRight(int index) {
-        int rightIndex = calculateRightIndex(index);
-        if (rightIndex + 1 >= items.length) return null;
-        return (T) items[rightIndex];
-    }
-
-    public int calculateParentIndex(int index) {
+    private int calculateParentIndex(int index) {
         return index == 0 ? -1 : index >> 1;
     }
 
-    public int calculateLeftIndex(int index) {
+    private int calculateLeftIndex(int index) {
         return index << 1;
     }
 
-    public int calculateRightIndex(int index) {
+    private int calculateRightIndex(int index) {
         return (index << 1) + 1;
     }
 
@@ -74,27 +121,4 @@ public class ArrayBinaryTree<T> {
         items = Arrays.copyOf(items, newCapacity);
     }
 
-    public void preTraversing(int index) {
-        T value = getValue(index);
-        if (value == null) return;
-        System.out.println(value);
-        preTraversing(calculateLeftIndex(index));
-        preTraversing(calculateRightIndex(index));
-    }
-
-    public void inTraversing(int index) {
-        T value = getValue(index);
-        if (value == null) return;
-        inTraversing(calculateLeftIndex(index));
-        System.out.println(value);
-        inTraversing(calculateRightIndex(index));
-    }
-
-    public void postTraversing(int index) {
-        T value = getValue(index);
-        if (value == null) return;
-        postTraversing(calculateLeftIndex(index));
-        postTraversing(calculateRightIndex(index));
-        System.out.println(value);
-    }
 }

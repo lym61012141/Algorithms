@@ -8,7 +8,12 @@ public class ArrayBinaryTreeNode<T> extends TreeNode<T> {
     }
 
     public ArrayBinaryTreeNode(T data) {
-        super.data = data;
+        this.data = data;
+    }
+
+    public ArrayBinaryTreeNode(Integer index, T data) {
+        this.index = index;
+        this.data = data;
     }
 
     public Integer getIndex() {

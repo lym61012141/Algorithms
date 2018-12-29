@@ -13,13 +13,13 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> setRoot(TreeNode<T> treeNode) {
-        return checkNodeTypeAndOperate(treeNode, node -> {
+        return mapWithCheck(treeNode, node -> {
             this.root = node;
             return node;
         });
     }
 
-    private LinkedBinaryTreeNode<T> checkNodeTypeAndOperate(TreeNode<T> node, Function<LinkedBinaryTreeNode<T>, LinkedBinaryTreeNode<T>> function) {
+    private LinkedBinaryTreeNode<T> mapWithCheck(TreeNode<T> node, Function<LinkedBinaryTreeNode<T>, LinkedBinaryTreeNode<T>> function) {
         if (node == null) return null;
         if (node instanceof LinkedBinaryTreeNode) {
             return function.apply((LinkedBinaryTreeNode<T>) node);
@@ -30,23 +30,23 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> getParent(TreeNode<T> node) {
-        return checkNodeTypeAndOperate(node, LinkedBinaryTreeNode::getParent);
+        return mapWithCheck(node, LinkedBinaryTreeNode::getParent);
     }
 
     @Override
     public TreeNode<T> getLeft(TreeNode<T> node) {
-        return checkNodeTypeAndOperate(node, LinkedBinaryTreeNode::getLeft);
+        return mapWithCheck(node, LinkedBinaryTreeNode::getLeft);
     }
 
     @Override
     public TreeNode<T> getRight(TreeNode<T> node) {
-        return checkNodeTypeAndOperate(node, LinkedBinaryTreeNode::getRight);
+        return mapWithCheck(node, LinkedBinaryTreeNode::getRight);
     }
 
     @Override
     public TreeNode<T> setLeft(TreeNode<T> parent, TreeNode<T> left) {
-        LinkedBinaryTreeNode<T> leftNode = checkNodeTypeAndOperate(left, node -> node);
-        LinkedBinaryTreeNode<T> parentNode = checkNodeTypeAndOperate(parent, node -> node);
+        LinkedBinaryTreeNode<T> leftNode = mapWithCheck(left, node -> node);
+        LinkedBinaryTreeNode<T> parentNode = mapWithCheck(parent, node -> node);
         leftNode.setParent(parentNode);
         parentNode.setLeft(leftNode);
         return leftNode;
@@ -54,8 +54,8 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> setRight(TreeNode<T> parent, TreeNode<T> right) {
-        LinkedBinaryTreeNode<T> rightNode = checkNodeTypeAndOperate(right, node -> node);
-        LinkedBinaryTreeNode<T> parentNode = checkNodeTypeAndOperate(parent, node -> node);
+        LinkedBinaryTreeNode<T> rightNode = mapWithCheck(right, node -> node);
+        LinkedBinaryTreeNode<T> parentNode = mapWithCheck(parent, node -> node);
         rightNode.setParent(parentNode);
         parentNode.setRight(rightNode);
         return rightNode;
