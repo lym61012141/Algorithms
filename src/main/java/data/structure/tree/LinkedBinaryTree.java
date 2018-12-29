@@ -13,7 +13,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> setRoot(TreeNode<T> treeNode) {
-        return checkNodeTypeAndOperate(root, node -> {
+        return checkNodeTypeAndOperate(treeNode, node -> {
             this.root = node;
             return node;
         });
@@ -30,7 +30,7 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> getParent(TreeNode<T> node) {
-        return null;
+        return checkNodeTypeAndOperate(node, LinkedBinaryTreeNode::getParent);
     }
 
     @Override
@@ -45,32 +45,19 @@ public class LinkedBinaryTree<T> implements BinaryTree<T> {
 
     @Override
     public TreeNode<T> setLeft(TreeNode<T> parent, TreeNode<T> left) {
-        return checkNodeTypeAndOperate(parent, parentNode -> parentNode.setLeft(checkNodeTypeAndOperate(left, node -> node)));
+        LinkedBinaryTreeNode<T> leftNode = checkNodeTypeAndOperate(left, node -> node);
+        LinkedBinaryTreeNode<T> parentNode = checkNodeTypeAndOperate(parent, node -> node);
+        leftNode.setParent(parentNode);
+        parentNode.setLeft(leftNode);
+        return leftNode;
     }
 
     @Override
     public TreeNode<T> setRight(TreeNode<T> parent, TreeNode<T> right) {
-        return checkNodeTypeAndOperate(parent, parentNode -> parentNode.setRight(checkNodeTypeAndOperate(right, node -> node)));
-    }
-
-    public static <T> void preTraversing(LinkedBinaryTreeNode<T> node) {
-        if (node == null) return;
-        System.out.println(node.getData());
-        preTraversing(node.getLeft());
-        preTraversing(node.getRight());
-    }
-
-    public static <T> void inTraversing(LinkedBinaryTreeNode<T> node) {
-        if (node == null) return;
-        inTraversing(node.getLeft());
-        System.out.println(node.getData());
-        inTraversing(node.getRight());
-    }
-
-    public static <T> void postTraversing(LinkedBinaryTreeNode<T> node) {
-        if (node == null) return;
-        postTraversing(node.getLeft());
-        postTraversing(node.getRight());
-        System.out.println(node.getData());
+        LinkedBinaryTreeNode<T> rightNode = checkNodeTypeAndOperate(right, node -> node);
+        LinkedBinaryTreeNode<T> parentNode = checkNodeTypeAndOperate(parent, node -> node);
+        rightNode.setParent(parentNode);
+        parentNode.setRight(rightNode);
+        return rightNode;
     }
 }

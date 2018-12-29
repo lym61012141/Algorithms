@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 public class TestLinkedBinaryTree {
 
+    private BinaryTree<String> binaryTree = new LinkedBinaryTree<>();
+
     private LinkedBinaryTreeNode<String> a = new LinkedBinaryTreeNode<>("A");
     private LinkedBinaryTreeNode<String> b = new LinkedBinaryTreeNode<>("B");
     private LinkedBinaryTreeNode<String> c = new LinkedBinaryTreeNode<>("C");
@@ -13,28 +15,30 @@ public class TestLinkedBinaryTree {
     private LinkedBinaryTreeNode<String> g = new LinkedBinaryTreeNode<>("G");
 
     {
-        a.setLeft(b);
-        a.setRight(c);
+        binaryTree.setRoot(a);
 
-        b.setLeft(d);
-        b.setRight(e);
+        binaryTree.setLeft(a, b);
+        binaryTree.setRight(a, c);
 
-        c.setLeft(f);
-        c.setRight(g);
+        binaryTree.setLeft(b, d);
+        binaryTree.setRight(b, e);
+
+        binaryTree.setLeft(c, f);
+        binaryTree.setRight(c, g);
     }
 
     @Test
     public void testLinkedPreTraversing() {
-        LinkedBinaryTree.preTraversing(a);
+        binaryTree.preTraversing(binaryTree.getRoot());
     }
 
     @Test
     public void testLinkedInTraversing() {
-        LinkedBinaryTree.inTraversing(a);
+        binaryTree.inTraversing(binaryTree.getRoot());
     }
 
     @Test
-    public void testLinkedPostTraversing(){
-        LinkedBinaryTree.postTraversing(a);
+    public void testLinkedPostTraversing() {
+        binaryTree.postTraversing(binaryTree.getRoot());
     }
 }
