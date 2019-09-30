@@ -27,7 +27,7 @@ public class Acceptor {
      */
     public static Proposer electMaster(List<Proposer> proposers) {
         String value = electValue(proposers);
-        Optional<Proposer> minSerializableNumberProposer = proposers.stream().filter(it -> value.equals(it.getValue())).sorted(Comparator.comparingLong(Proposer::getSerialNumber)).findFirst();
+        Optional<Proposer> minSerializableNumberProposer = proposers.stream().filter(it -> value.equals(it.getValue())).min(Comparator.comparingLong(Proposer::getSerialNumber));
         return minSerializableNumberProposer.orElse(null);
     }
 
